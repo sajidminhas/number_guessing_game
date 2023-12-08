@@ -10,7 +10,10 @@ function checkGuess() {
       attempts = 0;
       feedbackElement.innerHTML = "Wow you are right!";
       feedbackElement.style.color = "green"; // Success color
-      break;
+      inputElement.disabled = true;
+      document.querySelector('button').disabled = true;
+      return; // Exit function as the game is over.
+      
     } else if (guess < randomNumber) {
       feedbackElement.innerHTML =
         `Too low! Try again! <br> number of attempt left ${attempts}`;
@@ -31,6 +34,9 @@ function checkGuess() {
     feedbackElement.innerHTML =
       "You could'not guess the number <br> *** Game Over ****";
     feedbackElement.style.color = "red";
+    inputElement.disabled = true;
+    document.querySelector('button').disabled = true;
+    return; // Exit function as the game is over.
   }
   attempts -= 1;
 }
